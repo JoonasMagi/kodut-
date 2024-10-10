@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arva number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Arva, mis number on!</h1>
+<p>Arvuti on genereerinud numbri vahemikus 1-10. Proovi seda ära!</p>
+<input type="number" id="userGuess" min="1" max="10">
+<button onclick="checkGuess()">Kontrolli</button>
+<p id="result"></p>
+
+<script>
+    // Generaatori funktsioon
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+    console.log(randomNumber); // See rida on abiks arendajale
+
+    function checkGuess() {
+        const userGuess = parseInt(document.getElementById("userGuess").value);
+        const resultElement = document.getElementById("result");
+
+        if (userGuess < 1 || userGuess > 10 || isNaN(userGuess)) {
+            resultElement.textContent = "Palun sisesta number vahemikus 1-10.";
+        } else if (userGuess < randomNumber) {
+            resultElement.textContent = "Suurem!";
+        } else if (userGuess > randomNumber) {
+            resultElement.textContent = "Väiksem!";
+        } else {
+            resultElement.textContent = "Õige! Arv oli " + randomNumber + ".";
+        }
+    }
+</script>
+
+</body>
+</html>
